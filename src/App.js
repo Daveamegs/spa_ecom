@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import AllItem from "./components/AllItem";
 import Clothes from "./components/Clothes";
@@ -22,12 +23,43 @@ function App() {
     (category) => category.name === "tech"
   );
 
+  const allCategoryName = allCategoryData.map(({ name }) => name);
+  const clothesCategoryName = clothesCategoryData.map(({ name }) => name);
+  const techCategoryName = techCategoryData.map(({ name }) => name);
+
   return (
     <div className="App">
-      <NavBar />
-      <AllItem loading={loading} error={error} data={allCategoryData} />
-      <Clothes loading={loading} error={error} data={clothesCategoryData} />
-      <Tech loading={loading} error={error} data={techCategoryData} />
+      <BrowserRouter>
+        <NavBar
+          allCategoryName={allCategoryName}
+          clothesCategoryName={clothesCategoryName}
+          techCategoryName={techCategoryName}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AllItem loading={loading} error={error} data={allCategoryData} />
+            }
+          />
+          <Route
+            path="/clothes"
+            element={
+              <Clothes
+                loading={loading}
+                error={error}
+                data={clothesCategoryData}
+              />
+            }
+          />
+          <Route
+            path="/tech"
+            element={
+              <Tech loading={loading} error={error} data={techCategoryData} />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
