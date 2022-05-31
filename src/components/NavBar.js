@@ -1,19 +1,19 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
-const NavBar = () => {
+const NavBar = ({ allCategoryName, clothesCategoryName, techCategoryName }) => {
   return (
     <header>
       <nav>
         <ul>
           <li>
-            <a href="/">All</a>
+            <a href="/">{allCategoryName}</a>
           </li>
           <li>
-            <a href="/">Clothes</a>
+            <a href="/clothes">{clothesCategoryName}</a>
           </li>
           <li>
-            <a href="/">Tech</a>
+            <a href="/tech">{techCategoryName}</a>
           </li>
         </ul>
       </nav>
