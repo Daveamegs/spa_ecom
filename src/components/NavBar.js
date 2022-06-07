@@ -1,29 +1,33 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import {RiArrowDropDownLine} from "react-icons/ri"
 
 const NavBar = ({ allCategoryName, clothesCategoryName, techCategoryName }) => {
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
+    <header className="navbar-header">
+      <nav className="navbar--nav">
+        <ul className="nav-ul">
+          <li className="nav-li">
             <a href="/">{allCategoryName}</a>
           </li>
-          <li>
+          <li className="nav-li">
             <a href="/clothes">{clothesCategoryName}</a>
           </li>
-          <li>
+          <li className="nav-li">
             <a href="/tech">{techCategoryName}</a>
           </li>
         </ul>
       </nav>
-      <div>
+      <div className="navbar--logo">
         <img src="/" alt="" />
       </div>
 
-      <div>
-        <span>$</span>
-        <span>
+      <div className="navbar--cart-sign">
+        <span className="navbar--currency-sign">
+          $
+          <RiArrowDropDownLine />
+          </span>
+        <span className="navbar--cart-icon">
           <FaShoppingCart />
         </span>
       </div>
